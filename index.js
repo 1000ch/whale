@@ -1,4 +1,3 @@
-
 'use strict';
 const path = require('path');
 const fs = require('fs');
@@ -44,6 +43,7 @@ function createMainWindow() {
     icon: process.platform === 'linux' && path.join(__dirname, 'static/Icon.png'),
     minWidth: 480,
     minHeight: 480,
+    titleBarStyle: 'hidden-inset',
     autoHideMenuBar: true,
     backgroundColor: '#fff',
     webPreferences: {
@@ -90,7 +90,7 @@ app.on('ready', () => {
   const page = mainWindow.webContents;
 
   page.on('dom-ready', () => {
-    //page.insertCSS(fs.readFileSync(path.join(__dirname, 'browser.css'), 'utf8'));
+    page.insertCSS(fs.readFileSync(path.join(__dirname, 'browser.css'), 'utf8'));
     mainWindow.show();
   });
 
