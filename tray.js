@@ -7,7 +7,7 @@ let tray = null;
 
 exports.create = win => {
   if (process.platform === 'darwin' || tray) {
-      return;
+    return;
   }
 
   const iconPath = path.join(__dirname, 'static/IconTray.png');
@@ -35,14 +35,4 @@ exports.create = win => {
   tray.setToolTip(`${app.getName()}`);
   tray.setContextMenu(contextMenu);
   tray.on('click', toggleWin);
-};
-
-exports.setBadge = shouldDisplayUnread => {
-  if (process.platform === 'darwin' || !tray) {
-    return;
-  }
-
-  const icon = shouldDisplayUnread ? 'IconTrayUnread.png' : 'IconTray.png';
-  const iconPath = path.join(__dirname, `static/${icon}`);
-  tray.setImage(iconPath);
 };

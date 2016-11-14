@@ -8,7 +8,7 @@ script: npm run build
 deploy:
   provider: releases
   api_key: $GITHUB_OAUTH_TOKEN
-  file: ./dist/Trello-osx-${npm_package_version}.zip
+  file: ./dist/Whale-osx-${npm_package_version}.zip
   skip_cleanup: true
   on:
     tags: true
