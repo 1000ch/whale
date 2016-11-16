@@ -4,19 +4,8 @@ const path = require('path');
 const electron = require('electron');
 
 const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
 const shell = electron.shell;
 const appName = app.getName();
-
-function sendAction(action) {
-  const win = BrowserWindow.getAllWindows()[0];
-
-  if (process.platform === 'darwin') {
-    win.restore();
-  }
-
-  win.webContents.send(action);
-}
 
 const helpSubmenu = [{
   label: `${appName} Website`,
@@ -58,13 +47,6 @@ const darwinTpl = [{
   label: appName,
   submenu: [{
     role: 'about'
-  }, {
-    type: 'separator'
-  }, {
-    label: 'Log Out',
-    click() {
-      sendAction('log-out');
-    }
   }, {
     type: 'separator'
   }, {
@@ -127,13 +109,6 @@ const darwinTpl = [{
 const otherTpl = [{
   label: 'File',
   submenu: [{
-    label: 'Log Out',
-    click() {
-      sendAction('log-out');
-    }
-  }, {
-    type: 'separator'
-  }, {
     role: 'quit'
   }]
 }, {
