@@ -3,6 +3,8 @@
 Unofficial [Trello](https://trello.com/) app
 
 [![Build Status](https://travis-ci.org/1000ch/whale.svg?branch=master)](https://travis-ci.org/1000ch/whale)
+[![Dependency Status](https://david-dm.org/1000ch/whale.svg)](https://david-dm.org/1000ch/whale)
+[![devDependency Status](https://david-dm.org/1000ch/whale/dev-status.svg)](https://david-dm.org/1000ch/whale?type=dev)
 
 ![Whale demo](demo.png)
 
