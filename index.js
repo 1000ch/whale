@@ -31,6 +31,7 @@ if (isAlreadyRunning) {
 
 function createMainWindow() {
   const lastWindowState = config.get('lastWindowState');
+  const lastURL = config.get('lastURL');
   const maxWindowInteger = 2147483647; // used to set max window width/height when toggling fullscreen
 
   const win = new electron.BrowserWindow({
@@ -57,7 +58,7 @@ function createMainWindow() {
     win.setSheetOffset(40);
   }
 
-  win.loadURL('https://trello.com/login');
+  win.loadURL(lastURL);
 
   win.on('close', e => {
     if (!isQuitting) {
@@ -77,6 +78,10 @@ function createMainWindow() {
 
   win.on('enter-full-screen', () => {
     win.setMaximumSize(maxWindowInteger, maxWindowInteger);
+  });
+
+  win.webContents.on('did-navigate', (e, url) => {
+    config.set('lastURL', url);
   });
 
   return win;

@@ -6,6 +6,7 @@ module.exports = new Config({
     lastWindowState: {
       width: 840,
       height: 840
-    }
+    },
+    lastURL: 'https://trello.com/login'
   }
 });
