@@ -18,11 +18,11 @@ macOS 10.9+ & Linux are supported.
 
 ### Windows
 
-Coming soon.
+[Download](https://github.com/1000ch/whale/releases) and extract `.zip`, and move `Whale.exe` to some location.
 
 ### Linux
 
-[Download](https://github.com/1000ch/whale/releases) and extract `.zip`, and move `Whale.app` to somewhere.
+[Download](https://github.com/1000ch/whale/releases) and extract `.zip`, and move `Whale` to some location.
 
 ## License
 
