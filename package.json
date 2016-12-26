@@ -15,7 +15,7 @@
     "start": "electron .",
     "postversion": "git push && git push --tags",
     "build": "npm run build:macos && npm run build:linux && npm run build:windows",
-    "build:macos": "electron-packager . --overwrite --asar --out=dist --ignore='^asset$' --platform=darwin --arch=x64 --icon=static/Icon.icns --app-bundle-id=net.1000ch.whale --sign='Developer ID Application: Shogo Sensui (NZR22QGKNQ)' && cd dist/Whale-darwin-x64 && zip -ryXq9 ../Whale-macos-v${npm_package_version}.zip Whale.app",
+    "build:macos": "electron-packager . --overwrite --asar --out=dist --ignore='^asset$' --platform=darwin --arch=x64 --icon=static/Icon.icns --app-bundle-id=net.1000ch.whale --osx-sign='Developer ID Application: Shogo Sensui (NZR22QGKNQ)' && cd dist/Whale-darwin-x64 && zip -ryXq9 ../Whale-macos-v${npm_package_version}.zip Whale.app",
     "build:linux": "electron-packager . --overwrite --out=dist --ignore='^asset$' --platform=linux --arch=x64 --app-bundle-id=net.1000ch.whale && cd dist/Whale-linux-x64/ && zip -ryq9 ../Whale-linux-v${npm_package_version}.zip *",
     "build:windows": "electron-packager . --overwrite --asar --out=dist --ignore='^asset$' --platform=win32 --arch=ia32 --icon=static/Icon.ico --version-string.ProductName=$npm_package_productName && cd dist/Whale-win32-ia32 && zip -ryq9 ../Whale-windows-v${npm_package_version}.zip *"
   },
