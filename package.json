@@ -3,6 +3,7 @@
   "productName": "Whale",
   "version": "0.5.2",
   "description": "Whale app",
+  "private": true,
   "license": "MIT",
   "repository": "1000ch/whale",
   "author": {
