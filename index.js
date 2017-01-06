@@ -5,6 +5,7 @@ const electron = require('electron');
 const appMenu = require('./menu');
 const tray = require('./tray');
 const config = require('./config');
+const update = require('./update');
 
 const app = electron.app;
 
@@ -103,6 +104,9 @@ app.on('ready', () => {
     e.preventDefault();
     electron.shell.openExternal(url);
   });
+
+  update.init(electron.Menu.getApplicationMenu());
+  update.checkUpdate();
 });
 
 app.on('activate', () => {
