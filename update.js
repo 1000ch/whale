@@ -1,9 +1,10 @@
 'use strict';
 const electron = require('electron');
 const pkg = require('./package');
+
 const autoUpdater = electron.autoUpdater;
 
-module.exports.init = (appMenu) => {
+module.exports.init = appMenu => {
   if (process.platform !== 'darwin') {
     return;
   }

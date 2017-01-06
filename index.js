@@ -6,7 +6,6 @@ const appMenu = require('./menu');
 const tray = require('./tray');
 const config = require('./config');
 const update = require('./update');
-const pkg = require('./package');
 
 const app = electron.app;
 
