@@ -26,4 +26,4 @@ macOS 10.9+ & Linux are supported.
 
 ## License
 
-MIT: http://1000ch.mit-license.org
+[MIT](https://1000ch.mit-license.org) © [Shogo Sensui](https://github.com/1000ch)
