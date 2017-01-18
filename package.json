@@ -24,8 +24,7 @@
     "electron-config": "^0.2.1",
     "electron-context-menu": "^0.8.0",
     "electron-debug": "^1.1.0",
-    "electron-dl": "^1.5.0",
-    "element-ready": "^0.2.0"
+    "electron-dl": "^1.5.0"
   },
   "devDependencies": {
     "electron": "^1.4.0",
