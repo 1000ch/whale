@@ -16,6 +16,12 @@ macOS 10.9+ & Linux are supported.
 
 [Download](https://github.com/1000ch/whale/releases) and extract `.zip`, and move `Whale.app` to `/Applications`.
 
+Alternatively, if you use [Homebrew](http://brew.sh/), you can install via:
+
+```
+brew cask install whale
+```
+
 ### Windows
 
 [Download](https://github.com/1000ch/whale/releases) and extract `.zip`, and move `Whale.exe` to some location.
