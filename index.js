@@ -81,7 +81,7 @@ function createMainWindow() {
     win.setMaximumSize(maxWindowInteger, maxWindowInteger);
   });
 
-  win.webContents.on('did-navigate', (e, url) => {
+  win.webContents.on('did-navigate-in-page', (e, url) => {
     config.set('lastURL', url);
   });
 
