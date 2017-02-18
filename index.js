@@ -9,7 +9,7 @@ const update = require('./update');
 
 const app = electron.app;
 
-require('electron-debug')();
+require('electron-debug')({enabled: true});
 require('electron-dl')();
 require('electron-context-menu')();
 
@@ -84,6 +84,8 @@ function createMainWindow() {
   win.webContents.on('did-navigate-in-page', (e, url) => {
     config.set('lastURL', url);
   });
+
+  require('devtron').install();
 
   return win;
 }
