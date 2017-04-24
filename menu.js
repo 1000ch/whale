@@ -103,20 +103,20 @@ const darwinTpl = [{
 }, {
   label: 'View',
   submenu: [{
+    label: 'Reload',
+    accelerator: 'CmdOrCtrl+R',
+    click: (item, focusedWindow) => {
+      if (focusedWindow) {
+        focusedWindow.reload();
+      }
+    }
+  }, {
     label: 'Toggle Full Screen',
     accelerator: 'Ctrl+Command+F',
     click: (item, focusedWindow) => {
       if (focusedWindow) {
         focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
         focusedWindow.send('window:fullscreen', {state: focusedWindow.isFullScreen()});
-      }
-    }
-  }, {
-    label: 'Reload',
-    accelerator: 'CmdOrCtrl+R',
-    click: (item, focusedWindow) => {
-      if (focusedWindow) {
-        focusedWindow.reload();
       }
     }
   }, {
@@ -177,20 +177,20 @@ const otherTpl = [{
 }, {
   label: 'View',
   submenu: [{
+    label: 'Reload',
+    accelerator: 'CmdOrCtrl+R',
+    click: (item, focusedWindow) => {
+      if (focusedWindow) {
+        focusedWindow.reload();
+      }
+    }
+  }, {
     label: 'Toggle Full Screen',
     accelerator: 'F11',
     click: (item, focusedWindow) => {
       if (focusedWindow) {
         focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
         focusedWindow.send('window:fullscreen', {state: focusedWindow.isFullScreen()});
-      }
-    }
-  }, {
-    label: 'Reload',
-    accelerator: 'CmdOrCtrl+R',
-    click: (item, focusedWindow) => {
-      if (focusedWindow) {
-        focusedWindow.reload();
       }
     }
   }, {
