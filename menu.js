@@ -104,7 +104,7 @@ const darwinTpl = [{
   label: 'View',
   submenu: [{
     label: 'Toggle Full Screen',
-    accelerator: 'Control+Command+F',
+    accelerator: 'Ctrl+Command+F',
     click: (item, focusedWindow) => {
       if (focusedWindow) {
         focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
