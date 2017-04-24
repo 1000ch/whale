@@ -119,6 +119,12 @@ const darwinTpl = [{
         focusedWindow.reload();
       }
     }
+  }, {
+    label: 'Toggle Developer Tools',
+    accelerator: 'Alt+Command+I',
+    click: (item, focusedWindow) => {
+      focusedWindow.toggleDevTools();
+    }
   }]
 }, {
   role: 'window',
@@ -186,6 +192,12 @@ const otherTpl = [{
       if (focusedWindow) {
         focusedWindow.reload();
       }
+    }
+  }, {
+    label: 'Toggle Developer Tools',
+    accelerator: 'Ctrl+Shift+I',
+    click: (item, focusedWindow) => {
+      focusedWindow.toggleDevTools();
     }
   }]
 }, {
