@@ -111,6 +111,14 @@ const darwinTpl = [{
         focusedWindow.send('window:fullscreen', {state: focusedWindow.isFullScreen()});
       }
     }
+  }, {
+    label: 'Reload',
+    accelerator: 'CmdOrCtrl+R',
+    click: (item, focusedWindow) => {
+      if (focusedWindow) {
+        focusedWindow.reload();
+      }
+    }
   }]
 }, {
   role: 'window',
@@ -169,6 +177,14 @@ const otherTpl = [{
       if (focusedWindow) {
         focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
         focusedWindow.send('window:fullscreen', {state: focusedWindow.isFullScreen()});
+      }
+    }
+  }, {
+    label: 'Reload',
+    accelerator: 'CmdOrCtrl+R',
+    click: (item, focusedWindow) => {
+      if (focusedWindow) {
+        focusedWindow.reload();
       }
     }
   }]
