@@ -101,6 +101,18 @@ const darwinTpl = [{
     role: 'selectall'
   }]
 }, {
+  label: 'View',
+  submenu: [{
+    label: 'Toggle Full Screen',
+    accelerator: 'Control+Command+F',
+    click: (item, focusedWindow) => {
+      if (focusedWindow) {
+        focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
+        focusedWindow.send('window:fullscreen', {state: focusedWindow.isFullScreen()});
+      }
+    }
+  }]
+}, {
   role: 'window',
   submenu: [{
     role: 'minimize'
@@ -147,6 +159,18 @@ const otherTpl = [{
     type: 'separator'
   }, {
     role: 'selectall'
+  }]
+}, {
+  label: 'View',
+  submenu: [{
+    label: 'Toggle Full Screen',
+    accelerator: 'F11',
+    click: (item, focusedWindow) => {
+      if (focusedWindow) {
+        focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
+        focusedWindow.send('window:fullscreen', {state: focusedWindow.isFullScreen()});
+      }
+    }
   }]
 }, {
   role: 'help',
