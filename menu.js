@@ -101,6 +101,32 @@ const darwinTpl = [{
     role: 'selectall'
   }]
 }, {
+  label: 'View',
+  submenu: [{
+    label: 'Reload',
+    accelerator: 'CmdOrCtrl+R',
+    click: (item, focusedWindow) => {
+      if (focusedWindow) {
+        focusedWindow.reload();
+      }
+    }
+  }, {
+    label: 'Toggle Full Screen',
+    accelerator: 'Ctrl+Command+F',
+    click: (item, focusedWindow) => {
+      if (focusedWindow) {
+        focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
+        focusedWindow.send('window:fullscreen', {state: focusedWindow.isFullScreen()});
+      }
+    }
+  }, {
+    label: 'Toggle Developer Tools',
+    accelerator: 'Alt+Command+I',
+    click: (item, focusedWindow) => {
+      focusedWindow.toggleDevTools();
+    }
+  }]
+}, {
   role: 'window',
   submenu: [{
     role: 'minimize'
@@ -147,6 +173,32 @@ const otherTpl = [{
     type: 'separator'
   }, {
     role: 'selectall'
+  }]
+}, {
+  label: 'View',
+  submenu: [{
+    label: 'Reload',
+    accelerator: 'CmdOrCtrl+R',
+    click: (item, focusedWindow) => {
+      if (focusedWindow) {
+        focusedWindow.reload();
+      }
+    }
+  }, {
+    label: 'Toggle Full Screen',
+    accelerator: 'F11',
+    click: (item, focusedWindow) => {
+      if (focusedWindow) {
+        focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
+        focusedWindow.send('window:fullscreen', {state: focusedWindow.isFullScreen()});
+      }
+    }
+  }, {
+    label: 'Toggle Developer Tools',
+    accelerator: 'Ctrl+Shift+I',
+    click: (item, focusedWindow) => {
+      focusedWindow.toggleDevTools();
+    }
   }]
 }, {
   role: 'help',
