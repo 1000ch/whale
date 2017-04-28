@@ -44,7 +44,7 @@ module.exports.init = appMenu => {
     applyUpdate.enabled = true;
   });
 
-  autoUpdater.setFeedURL(`https://whale-updater.herokuapp.com/updates/latest?v=v${pkg.version}`);
+  autoUpdater.setFeedURL(`https://1000ch.github.io/whale/latest.json?v=v${pkg.version}`);
 };
 
 module.exports.checkUpdate = () => {
