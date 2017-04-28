@@ -33,7 +33,7 @@ if (isAlreadyRunning) {
 function createMainWindow() {
   const lastWindowState = config.get('lastWindowState');
   const lastURL = config.get('lastURL');
-  const maxWindowInteger = 2147483647; // used to set max window width/height when toggling fullscreen
+  const maxWindowInteger = 2147483647;
 
   const win = new electron.BrowserWindow({
     title: app.getName(),

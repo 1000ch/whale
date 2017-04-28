@@ -30,7 +30,7 @@
   "devDependencies": {
     "electron": "^1.6.0",
     "electron-packager": "^8.5.0",
-    "xo": "^0.17.0"
+    "xo": "^0.18.0"
   },
   "xo": {
     "esnext": true,
