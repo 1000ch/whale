@@ -111,6 +111,16 @@ const darwinTpl = [{
       }
     }
   }, {
+		type: 'separator'
+  }, {
+		role: 'zoomin'
+  }, {
+		role: 'zoomout'
+  }, {
+		role: 'resetzoom'
+  }, {
+		type: 'separator'
+  }, {
     label: 'Toggle Full Screen',
     accelerator: 'Ctrl+Command+F',
     click: (item, focusedWindow) => {
@@ -184,6 +194,16 @@ const otherTpl = [{
         focusedWindow.reload();
       }
     }
+  }, {
+		type: 'separator'
+  }, {
+		role: 'zoomin'
+  }, {
+		role: 'zoomout'
+  }, {
+		role: 'resetzoom'
+  }, {
+		type: 'separator'
   }, {
     label: 'Toggle Full Screen',
     accelerator: 'F11',
