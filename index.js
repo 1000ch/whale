@@ -52,7 +52,8 @@ function createMainWindow() {
       preload: path.join(__dirname, 'browser.js'),
       nodeIntegration: false,
       plugins: true
-    }
+    },
+    nodeIntegration: true
   });
 
   if (process.platform === 'darwin') {
