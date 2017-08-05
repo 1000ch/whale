@@ -1,7 +1,6 @@
 'use strict';
 const url = require('url');
 const electron = require('electron');
-const pkg = require('./package');
 
 const autoUpdater = electron.autoUpdater;
 
