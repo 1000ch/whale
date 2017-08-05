@@ -45,7 +45,7 @@ module.exports.init = appMenu => {
     applyUpdate.enabled = true;
   });
 
-  autoUpdater.setFeedURL(url.resolve('https://hazel-mdyjxpqlnl.now.sh', 'update', process.platform, app.getVersion()));
+  autoUpdater.setFeedURL(url.resolve('https://hazel-mdyjxpqlnl.now.sh', 'update', process.platform, electron.app.getVersion()));
 };
 
 module.exports.checkUpdate = () => {
