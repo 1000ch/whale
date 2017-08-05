@@ -27,7 +27,7 @@ module.exports.init = () => {
 
   const { platform } = process;
   const version = electron.app.getVersion();
-  const feedURL = url.resolve('https://hazel-mdyjxpqlnl.now.sh', 'update', platform, version);
+  const feedURL = `https://hazel-mdyjxpqlnl.now.sh/update/${platform}/${version}`;
   autoUpdater.setFeedURL(feedURL);
 };
 
