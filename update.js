@@ -1,4 +1,5 @@
 'use strict';
+const url = require('url');
 const electron = require('electron');
 const pkg = require('./package');
 
@@ -44,7 +45,7 @@ module.exports.init = appMenu => {
     applyUpdate.enabled = true;
   });
 
-  autoUpdater.setFeedURL(`https://1000ch.github.io/whale/latest.json?v=v${pkg.version}`);
+  autoUpdater.setFeedURL(url.resolve('https://hazel-mdyjxpqlnl.now.sh', 'update', process.platform, app.getVersion()));
 };
 
 module.exports.checkUpdate = () => {
