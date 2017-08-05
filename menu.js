@@ -2,7 +2,6 @@
 const os = require('os');
 const path = require('path');
 const electron = require('electron');
-const update = require('./update');
 
 const app = electron.app;
 const shell = electron.shell;
@@ -48,19 +47,6 @@ const darwinTpl = [{
   label: appName,
   submenu: [{
     role: 'about'
-  }, {
-    id: 'check-update',
-    label: 'Check for Updates...',
-    click() {
-      update.checkUpdate();
-    }
-  }, {
-    id: 'apply-update',
-    label: 'Apply downloaded Updates',
-    enabled: false,
-    click() {
-      update.applyUpdate();
-    }
   }, {
     type: 'separator'
   }, {
