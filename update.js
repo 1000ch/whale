@@ -25,7 +25,10 @@ module.exports.init = () => {
     console.log('update-downloaded');
   });
 
-  autoUpdater.setFeedURL(url.resolve('https://hazel-mdyjxpqlnl.now.sh', 'update', process.platform, electron.app.getVersion()));
+  const { platform } = process;
+  const version = electron.app.getVersion();
+  const feedURL = url.resolve('https://hazel-mdyjxpqlnl.now.sh', 'update', platform, version);
+  autoUpdater.setFeedURL(feedURL);
 };
 
 module.exports.checkUpdate = () => {
