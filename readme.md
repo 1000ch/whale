@@ -30,6 +30,14 @@ brew cask install whale
 
 [Download](https://github.com/1000ch/whale/releases) and extract `.zip`, and move `Whale` to some location.
 
+## Keyboard shortcuts
+
+Description                | Keys
+-------------------------- | --------------------------
+Reset Zoom Level           | <kbd>Cmd/Ctrl</kbd> <kbd>0</kbd>
+Make Text Smaller          | <kbd>Cmd/Ctrl</kbd> <kbd>-</kbd>
+Make Text Larger           | <kbd>Cmd/Ctrl</kbd> <kbd>Shift</kbd> <kbd>=</kbd>
+
 ## License
 
 [MIT](https://1000ch.mit-license.org) © [Shogo Sensui](https://github.com/1000ch)
