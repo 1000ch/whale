@@ -129,6 +129,10 @@ const darwinTpl = [{
     click() {
       activate('log-out');
     }
+  }, {
+    type: 'separator'
+  }, {
+    role: 'quit'
   }]
 }, {
   label: 'Edit',
@@ -371,6 +375,10 @@ const otherTpl = [{
     click() {
       activate('log-out');
     }
+  }, {
+    type: 'separator'
+  }, {
+    role: 'quit'
   }]
 }, {
   label: 'Edit',
