@@ -6,6 +6,7 @@ const electron = require('electron');
 const app = electron.app;
 const shell = electron.shell;
 const appName = app.getName();
+const BrowserWindow = electron.BrowserWindow;
 
 const helpSubmenu = [{
   label: `${appName} Website`,
@@ -25,6 +26,13 @@ ${process.platform} ${process.arch} ${os.release()}`;
     shell.openExternal(`https://github.com/1000ch/whale/issues/new?body=${encodeURIComponent(body)}`);
   }
 }];
+
+function activate(command) {
+  const appWindow = BrowserWindow.getAllWindows()[0];
+  // Extra measure in order to be shown
+  appWindow.show();
+  appWindow.webContents.send(command);
+}
 
 if (process.platform !== 'darwin') {
   helpSubmenu.push({
@@ -66,6 +74,63 @@ const darwinTpl = [{
     role: 'quit'
   }]
 }, {
+  label: 'File',
+  submenu: [{
+    label: 'Profile',
+    accelerator: 'CmdorCtrl+P',
+    click() {
+      activate('toggle-profile');
+    }
+  }, {
+    label: 'Notifications',
+    accelerator: 'CmdorCtrl+N',
+    click() {
+      activate('toggle-notifications');
+    }
+  }, {
+    label: 'Subscribed Cards',
+    accelerator: 'CmdorCtrl+Shift+S',
+    click() {
+      activate('toggle-cards');
+    }
+  }, {
+    type: 'separator'
+  }, {
+    label: 'Search',
+    accelerator: 'CmdorCtrl+F',
+    click() {
+      activate('search');
+    }
+  }, {
+    type: 'separator'
+  }, {
+    label: 'Settings',
+    accelerator: 'CmdorCtrl+,',
+    click() {
+      activate('settings');
+    }
+  }, {
+    label: 'Return Home',
+    accelerator: 'CmdorCtrl+H',
+    click() {
+      activate('return-home');
+    }
+  }, {
+    label: 'Change language',
+    accelerator: 'CmdorCtrl+Shift+L',
+    click() {
+      activate('change-language');
+    }
+  }, {
+    type: 'separator'
+  }, {
+    label: 'Log Out',
+    accelerator: 'CmdorCtrl+Shift+Q',
+    click() {
+      activate('log-out');
+    }
+  }]
+}, {
   label: 'Edit',
   submenu: [{
     role: 'undo'
@@ -85,6 +150,124 @@ const darwinTpl = [{
     role: 'delete'
   }, {
     role: 'selectall'
+  }]
+}, {
+  label: 'Boards',
+  submenu: [{
+    label: 'Board Actions',
+    submenu: [{
+      label: 'Star Board',
+      accelerator: 'CmdorCtrl+S',
+      click() {
+        activate('star-board');
+      }
+    }, {
+      label: 'Copy Board',
+      accelerator: 'CmdorCtrl+Shift+C',
+      click() {
+        activate('copy-board');
+      }
+    }, {
+      label: 'Create Board',
+      accelerator: 'CmdorCtrl+B',
+      click() {
+        activate('create-board');
+      }
+    }, {
+      label: 'Rename Board',
+      accelerator: 'CmdorCtrl+E',
+      click() {
+        activate('rename-board');
+      }
+    }, {
+      type: 'separator'
+    }, {
+      label: 'Info',
+      accelerator: 'CmdorCtrl+I',
+      click() {
+        activate('toggle-info');
+      }
+    }, {
+      label: 'Labels',
+      accelerator: 'CmdorCtrl+L',
+      click() {
+        activate('board-labels');
+      }
+    }, {
+      label: 'Archive',
+      accelerator: 'CmdorCtrl+Shift+E',
+      click() {
+        activate('board-archive');
+      }
+    }, {
+      label: 'Subscribe',
+      accelerator: 'CmdorCtrl+U',
+      click() {
+        activate('board-subsribe');
+      }
+    }, {
+      type: 'separator'
+    }, {
+      label: 'Stickers',
+      accelerator: 'CmdorCtrl+K',
+      click() {
+        activate('toggle-stickers');
+      }
+    }, {
+      label: 'Power-Ups',
+      accelerator: 'CmdorCtrl+O',
+      click() {
+        activate('toggle-power-ups');
+      }
+    }]
+  }, {
+    type: 'separator'
+  }, {
+    label: 'Create Team',
+    accelerator: 'CmdorCtrl+T',
+    click() {
+      activate('create-team');
+    }
+  }, {
+    label: 'Add Members',
+    accelerator: 'CmdorCtrl+Shift+M',
+    click() {
+      activate('add-members');
+    }
+  }, {
+    type: 'separator'
+  }, {
+    label: 'Board Settings',
+    accelerator: 'CmdorCtrl+Shift+,',
+    click() {
+      activate('board-settings');
+    }
+  }, {
+    label: 'Print/Export Board',
+    accelerator: 'CmdorCtrl+Shift+P',
+    click() {
+      activate('print-export-board');
+    }
+  }, {
+    label: 'Change Background',
+    accelerator: 'CmdorCtrl+Shift+B',
+    click() {
+      activate('change-background');
+    }
+  }, {
+    label: 'Email-to-Board Settings',
+    accelerator: 'CmdorCtrl+Shift+G',
+    click() {
+      activate('email-to-board-settings');
+    }
+  }, {
+    type: 'separator'
+  }, {
+    label: 'Close Board',
+    accelerator: 'CmdorCtrl+Shift+Y',
+    click() {
+      activate('close-board');
+    }
   }]
 }, {
   label: 'View',
@@ -135,7 +318,59 @@ const darwinTpl = [{
 const otherTpl = [{
   label: 'File',
   submenu: [{
-    role: 'quit'
+    label: 'Profile',
+    accelerator: 'CmdorCtrl+P',
+    click() {
+      activate('toggle-profile');
+    }
+  }, {
+    label: 'Notifications',
+    accelerator: 'CmdorCtrl+N',
+    click() {
+      activate('toggle-notifications');
+    }
+  }, {
+    label: 'Subscribed Cards',
+    accelerator: 'CmdorCtrl+Shift+S',
+    click() {
+      activate('subscribed-cards');
+    }
+  }, {
+    type: 'separator'
+  }, {
+    label: 'Search',
+    accelerator: 'CmdorCtrl+F',
+    click() {
+      activate('search');
+    }
+  }, {
+    type: 'separator'
+  }, {
+    label: 'Settings',
+    accelerator: 'CmdorCtrl+,',
+    click() {
+      activate('settings');
+    }
+  }, {
+    label: 'Return Home',
+    accelerator: 'CmdorCtrl+H',
+    click() {
+      activate('return-home');
+    }
+  }, {
+    label: 'Change language',
+    accelerator: 'CmdorCtrl+Shift+L',
+    click() {
+      activate('change-language');
+    }
+  }, {
+    type: 'separator'
+  }, {
+    label: 'Log Out',
+    accelerator: 'CmdorCtrl+Shift+Q',
+    click() {
+      activate('log-out');
+    }
   }]
 }, {
   label: 'Edit',
@@ -159,6 +394,124 @@ const otherTpl = [{
     type: 'separator'
   }, {
     role: 'selectall'
+  }]
+}, {
+  label: 'Boards',
+  submenu: [{
+    label: 'Board Actions',
+    submenu: [{
+      label: 'Star Board',
+      accelerator: 'CmdorCtrl+S',
+      click() {
+        activate('star-board');
+      }
+    }, {
+      label: 'Copy Board',
+      accelerator: 'CmdorCtrl+Shift+C',
+      click() {
+        activate('copy-board');
+      }
+    }, {
+      label: 'Create Board',
+      accelerator: 'CmdorCtrl+B',
+      click() {
+        activate('create-board');
+      }
+    }, {
+      label: 'Rename Board',
+      accelerator: 'CmdorCtrl+E',
+      click() {
+        activate('rename-board');
+      }
+    }, {
+      type: 'separator'
+    }, {
+      label: 'Info',
+      accelerator: 'CmdorCtrl+I',
+      click() {
+        activate('toggle-info');
+      }
+    }, {
+      label: 'Labels',
+      accelerator: 'CmdorCtrl+L',
+      click() {
+        activate('board-labels');
+      }
+    }, {
+      label: 'Archive',
+      accelerator: 'CmdorCtrl+Shift+E',
+      click() {
+        activate('board-archive');
+      }
+    }, {
+      label: 'Subscribe',
+      accelerator: 'CmdorCtrl+U',
+      click() {
+        activate('board-subsribe');
+      }
+    }, {
+      type: 'separator'
+    }, {
+      label: 'Stickers',
+      accelerator: 'CmdorCtrl+K',
+      click() {
+        activate('toggle-stickers');
+      }
+    }, {
+      label: 'Power-Ups',
+      accelerator: 'CmdorCtrl+O',
+      click() {
+        activate('toggle-power-ups');
+      }
+    }]
+  }, {
+    type: 'separator'
+  }, {
+    label: 'Create Team',
+    accelerator: 'CmdorCtrl+T',
+    click() {
+      activate('create-team');
+    }
+  }, {
+    label: 'Add Members',
+    accelerator: 'CmdorCtrl+Shift+M',
+    click() {
+      activate('add-members');
+    }
+  }, {
+    type: 'separator'
+  }, {
+    label: 'Board Settings',
+    accelerator: 'CmdorCtrl+Shift+,',
+    click() {
+      activate('board-settings');
+    }
+  }, {
+    label: 'Print/Export Board',
+    accelerator: 'CmdorCtrl+Shift+P',
+    click() {
+      activate('print-export-board');
+    }
+  }, {
+    label: 'Change Background',
+    accelerator: 'CmdorCtrl+Shift+B',
+    click() {
+      activate('change-background');
+    }
+  }, {
+    label: 'Email-to-Board Settings',
+    accelerator: 'CmdorCtrl+Shift+G',
+    click() {
+      activate('email-to-board-settings');
+    }
+  }, {
+    type: 'separator'
+  }, {
+    label: 'Close Board',
+    accelerator: 'CmdorCtrl+Shift+Y',
+    click() {
+      activate('close-board');
+    }
   }]
 }, {
   label: 'View',
