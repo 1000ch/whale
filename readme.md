@@ -60,6 +60,9 @@ Change Background          | <kbd>Cmd/Ctrl</kbd> <kbd>Shift</kbd> <kbd>B</kbd>
 Print/Export Board         | <kbd>Cmd/Ctrl</kbd> <kbd>Shift</kbd> <kbd>P</kbd>
 Toggle Subscribed Cards    | <kbd>Cmd/Ctrl</kbd> <kbd>Shift</kbd> <kbd>S</kbd>
 Email-to-Board Settings    | <kbd>Cmd/Ctrl</kbd> <kbd>Shift</kbd> <kbd>G</kbd>
+Reset Zoom Level           | <kbd>Cmd/Ctrl</kbd> <kbd>0</kbd>
+Make Text Smaller          | <kbd>Cmd/Ctrl</kbd> <kbd>-</kbd>
+Make Text Larger           | <kbd>Cmd/Ctrl</kbd> <kbd>Shift</kbd> <kbd>=</kbd>
 
 ## License
 

@@ -8,6 +8,13 @@ const shell = electron.shell;
 const appName = app.getName();
 const BrowserWindow = electron.BrowserWindow;
 
+function activate(command) {
+  const appWindow = BrowserWindow.getAllWindows()[0];
+  // Extra measure in order to be shown
+  appWindow.show();
+  appWindow.webContents.send(command);
+}
+
 const helpSubmenu = [{
   label: `${appName} Website`,
   click() {
@@ -26,13 +33,6 @@ ${process.platform} ${process.arch} ${os.release()}`;
     shell.openExternal(`https://github.com/1000ch/whale/issues/new?body=${encodeURIComponent(body)}`);
   }
 }];
-
-function activate(command) {
-  const appWindow = BrowserWindow.getAllWindows()[0];
-  // Extra measure in order to be shown
-  appWindow.show();
-  appWindow.webContents.send(command);
-}
 
 if (process.platform !== 'darwin') {
   helpSubmenu.push({
@@ -284,6 +284,28 @@ const darwinTpl = [{
       }
     }
   }, {
+    type: 'separator'
+  }, {
+    label: 'Make Text Larger',
+    accelerator: 'CmdOrCtrl+Plus',
+    click() {
+      activate('zoom-in');
+    }
+  }, {
+    label: 'Make Text Smaller',
+    accelerator: 'CmdOrCtrl+-',
+    click() {
+      activate('zoom-out');
+    }
+  }, {
+    label: 'Reset Zoom Level',
+    accelerator: 'CmdOrCtrl+0',
+    click() {
+      activate('zoom-reset');
+    }
+  }, {
+    type: 'separator'
+  }, {
     label: 'Toggle Full Screen',
     accelerator: 'Ctrl+Command+F',
     click: (item, focusedWindow) => {
@@ -531,6 +553,28 @@ const otherTpl = [{
         focusedWindow.reload();
       }
     }
+  }, {
+    type: 'separator'
+  }, {
+    label: 'Make Text Larger',
+    accelerator: 'CmdOrCtrl+Plus',
+    click() {
+      activate('zoom-in');
+    }
+  }, {
+    label: 'Make Text Smaller',
+    accelerator: 'CmdOrCtrl+-',
+    click() {
+      activate('zoom-out');
+    }
+  }, {
+    label: 'Reset Zoom Level',
+    accelerator: 'CmdOrCtrl+0',
+    click() {
+      activate('zoom-reset');
+    }
+  }, {
+    type: 'separator'
   }, {
     label: 'Toggle Full Screen',
     accelerator: 'F11',
