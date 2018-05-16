@@ -1,11 +1,8 @@
 'use strict';
-const electron = require('electron');
+const {ipcRenderer, webFrame} = require('electron');
 const config = require('./config');
 
-const ipc = electron.ipcRenderer;
-const webFrame = electron.webFrame;
-
-ipc.on('zoom-in', () => {
+ipcRenderer.on('zoom-in', () => {
   // Get zoom factor and increase it
   const currentZoomFactor = webFrame.getZoomFactor();
   const zoomFactor = currentZoomFactor + 0.05;
@@ -16,7 +13,7 @@ ipc.on('zoom-in', () => {
   }
 });
 
-ipc.on('zoom-out', () => {
+ipcRenderer.on('zoom-out', () => {
   // Get zoom factor and decrease it
   const currentZoomFactor = webFrame.getZoomFactor();
   const zoomFactor = currentZoomFactor - 0.05;
@@ -27,7 +24,7 @@ ipc.on('zoom-out', () => {
   }
 });
 
-ipc.on('zoom-reset', () => {
+ipcRenderer.on('zoom-reset', () => {
   // Reset zoom factor
   webFrame.setZoomFactor(1.0);
   config.set('zoomFactor', 1.0);

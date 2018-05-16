@@ -1,8 +1,7 @@
 'use strict';
 const path = require('path');
-const electron = require('electron');
+const {app, Menu, Tray} = require('electron');
 
-const app = electron.app;
 let tray = null;
 
 exports.create = win => {
@@ -20,7 +19,7 @@ exports.create = win => {
     }
   };
 
-  const contextMenu = electron.Menu.buildFromTemplate([{
+  const contextMenu = Menu.buildFromTemplate([{
     label: 'Toggle',
     click() {
       toggleWin();
@@ -31,7 +30,7 @@ exports.create = win => {
     role: 'quit'
   }]);
 
-  tray = new electron.Tray(iconPath);
+  tray = new Tray(iconPath);
   tray.setToolTip(`${app.getName()}`);
   tray.setContextMenu(contextMenu);
   tray.on('click', toggleWin);

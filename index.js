@@ -1,13 +1,11 @@
 'use strict';
 const path = require('path');
 const fs = require('fs');
-const electron = require('electron');
+const {app, shell, BrowserWindow, Menu} = require('electron');
 const appMenu = require('./menu');
 const tray = require('./tray');
 const config = require('./config');
 const update = require('./update');
-
-const app = electron.app;
 
 require('electron-debug')({enabled: true});
 require('electron-dl')();
@@ -35,7 +33,7 @@ function createMainWindow() {
   const lastURL = config.get('lastURL');
   const maxWindowInteger = 2147483647;
 
-  const win = new electron.BrowserWindow({
+  const win = new BrowserWindow({
     title: app.getName(),
     show: false,
     x: lastWindowState.x,
@@ -92,7 +90,7 @@ function createMainWindow() {
 }
 
 app.on('ready', () => {
-  electron.Menu.setApplicationMenu(appMenu);
+  Menu.setApplicationMenu(appMenu);
   mainWindow = createMainWindow();
   tray.create(mainWindow);
 
@@ -105,10 +103,10 @@ app.on('ready', () => {
 
   page.on('new-window', (e, url) => {
     e.preventDefault();
-    electron.shell.openExternal(url);
+    shell.openExternal(url);
   });
 
-  update.init(electron.Menu.getApplicationMenu());
+  update.init(Menu.getApplicationMenu());
   update.checkUpdate();
 });
 
