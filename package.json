@@ -9,7 +9,7 @@
   "author": {
     "name": "Shogo Sensui",
     "email": "shogo.sensui@gmail.com",
-    "url": "github.com/1000ch"
+    "url": "https://github.com/1000ch"
   },
   "scripts": {
     "test": "xo",
