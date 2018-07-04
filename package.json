@@ -23,9 +23,9 @@
   "dependencies": {
     "devtron": "^1.4.0",
     "electron-config": "^1.0.0",
-    "electron-context-menu": "^0.9.0",
-    "electron-debug": "^1.5.0",
-    "electron-dl": "^1.11.0"
+    "electron-context-menu": "^0.10.0",
+    "electron-debug": "^2.0.0",
+    "electron-dl": "^1.12.0"
   },
   "devDependencies": {
     "electron": "^2.0.2",
