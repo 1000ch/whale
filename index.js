@@ -14,7 +14,7 @@ require('electron-context-menu')();
 let mainWindow;
 let isQuitting = false;
 
-const isAlreadyRunning = app.makeSingleInstance(() => {
+app.on('second-instance', () => {
   if (mainWindow) {
     if (mainWindow.isMinimized()) {
       mainWindow.restore();
@@ -24,7 +24,7 @@ const isAlreadyRunning = app.makeSingleInstance(() => {
   }
 });
 
-if (isAlreadyRunning) {
+if (!app.requestSingleInstanceLock()) {
   app.quit();
 }
 
@@ -43,7 +43,7 @@ function createMainWindow() {
     icon: process.platform === 'linux' && path.join(__dirname, 'static/Icon.png'),
     minWidth: 480,
     minHeight: 480,
-    titleBarStyle: 'hidden-inset',
+    titleBarStyle: 'hiddenInset',
     autoHideMenuBar: true,
     backgroundColor: '#fff',
     webPreferences: {
