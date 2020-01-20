@@ -24,13 +24,13 @@
   "dependencies": {
     "devtron": "^1.4.0",
     "electron-config": "^2.0.0",
-    "electron-context-menu": "^0.15.1",
-    "electron-debug": "^3.0.0",
-    "electron-dl": "^1.14.0"
+    "electron-context-menu": "^0.15.2",
+    "electron-debug": "^3.0.1",
+    "electron-dl": "^3.0.0"
   },
   "devDependencies": {
-    "electron": "^7.1.1",
-    "electron-builder": "^21.0.15",
+    "electron": "^7.1.9",
+    "electron-builder": "^22.0.0",
     "xo": "^0.25.3"
   },
   "build": {
