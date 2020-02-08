@@ -26,8 +26,8 @@ ipcRenderer.on('zoom-out', () => {
 
 ipcRenderer.on('zoom-reset', () => {
   // Reset zoom factor
-  webFrame.setZoomFactor(1.0);
-  config.set('zoomFactor', 1.0);
+  webFrame.setZoomFactor(1);
+  config.set('zoomFactor', 1);
 });
 
 document.addEventListener('DOMContentLoaded', () => {
