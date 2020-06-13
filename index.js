@@ -60,9 +60,9 @@ function createMainWindow() {
 
   win.loadURL(lastURL);
 
-  win.on('close', e => {
+  win.on('close', event => {
     if (!isQuitting) {
-      e.preventDefault();
+      event.preventDefault();
 
       if (process.platform === 'darwin') {
         app.hide();
@@ -72,15 +72,15 @@ function createMainWindow() {
     }
   });
 
-  win.on('page-title-updated', e => {
-    e.preventDefault();
+  win.on('page-title-updated', event => {
+    event.preventDefault();
   });
 
   win.on('enter-full-screen', () => {
     win.setMaximumSize(maxWindowInteger, maxWindowInteger);
   });
 
-  win.webContents.on('did-navigate-in-page', (e, url) => {
+  win.webContents.on('did-navigate-in-page', (event, url) => {
     config.set('lastURL', url);
   });
 
@@ -99,8 +99,8 @@ app.on('ready', () => {
     mainWindow.show();
   });
 
-  page.on('new-window', (e, url) => {
-    e.preventDefault();
+  page.on('new-window', (event, url) => {
+    event.preventDefault();
     shell.openExternal(url);
   });
 
