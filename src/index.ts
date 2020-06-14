@@ -16,6 +16,9 @@ electronContextMenu();
 let mainWindow: BrowserWindow = null;
 let isQuitting = false;
 
+const cssPath = path.resolve(__dirname, '../browser.css');
+const browserCSS = fs.readFileSync(cssPath, 'utf8');
+
 app.on('second-instance', () => {
   if (mainWindow?.isMinimized()) {
     mainWindow?.restore();
@@ -85,9 +88,7 @@ app.on('ready', async () => {
   tray.create(mainWindow);
 
   mainWindow.webContents.on('dom-ready', async () => {
-    const browserCSS = path.resolve(__dirname, '../browser.css');
-    const css = await fs.promises.readFile(browserCSS, 'utf8');
-    await mainWindow.webContents.insertCSS(css);
+    await mainWindow.webContents.insertCSS(browserCSS);
     mainWindow.show();
   });
 
