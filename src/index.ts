@@ -9,7 +9,10 @@ import tray from './tray';
 import config from './config';
 import update from './update';
 
-electronDebug({isEnabled: true});
+electronDebug({
+  isEnabled: true,
+  showDevTools: false
+});
 electronDl();
 electronContextMenu();
 
