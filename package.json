@@ -18,8 +18,9 @@
     "postversion": "git push && git push --tags",
     "test": "xo",
     "start": "electron .",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder --macos --linux --windows"
+    "pack": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder --macos --linux --windows",
+    "build": "tsc"
   },
   "dependencies": {
     "electron-config": "^2.0.0",
@@ -30,6 +31,7 @@
   "devDependencies": {
     "electron": "^9.0.0",
     "electron-builder": "^22.7.0",
+    "typescript": "^3.9.5",
     "xo": "^0.32.0"
   },
   "build": {

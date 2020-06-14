@@ -1,6 +1,6 @@
-const Config = require('electron-config');
+import Config from 'electron-config';
 
-module.exports = new Config({
+export default new Config({
   defaults: {
     zoomFactor: 1,
     lastWindowState: {

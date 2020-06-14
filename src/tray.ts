@@ -1,21 +1,20 @@
-'use strict';
-const path = require('path');
-const {app, Menu, Tray} = require('electron');
+import path from 'path';
+import {app, Menu, Tray, BrowserWindow} from 'electron';
 
 let tray = null;
 
-exports.create = win => {
+function create(window: BrowserWindow) {
   if (process.platform === 'darwin' || tray) {
     return;
   }
 
-  const iconPath = path.join(__dirname, 'static/IconTray.png');
+  const iconPath = path.resolve(__dirname, '../static/IconTray.png');
 
   const toggleWin = () => {
-    if (win.isVisible()) {
-      win.hide();
+    if (window.isVisible()) {
+      window.hide();
     } else {
-      win.show();
+      window.show();
     }
   };
 
@@ -34,4 +33,7 @@ exports.create = win => {
   tray.setToolTip(`${app.getName()}`);
   tray.setContextMenu(contextMenu);
   tray.on('click', toggleWin);
-};
+}
+
+const defaultObject = {create};
+export default defaultObject;
