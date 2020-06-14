@@ -1,14 +1,7 @@
 import os from 'os';
-import {app, shell, dialog, BrowserWindow, Menu, MenuItemConstructorOptions} from 'electron';
+import {app, shell, dialog, Menu, MenuItemConstructorOptions} from 'electron';
 
 const appName = app.getName();
-
-function activate(command) {
-  const appWindow = BrowserWindow.getAllWindows()[0];
-  // Extra measure in order to be shown
-  appWindow.show();
-  appWindow.webContents.send(command);
-}
 
 const helpSubmenu: MenuItemConstructorOptions[] = [{
   label: `${appName} Website`,
@@ -90,36 +83,6 @@ const darwinTemplate: MenuItemConstructorOptions[] = [{
         focusedWindow.reload();
       }
     }
-  }, {
-    type: 'separator'
-  }, {
-    label: 'Make Text Larger',
-    accelerator: 'CmdOrCtrl+Plus',
-    click() {
-      activate('zoom-in');
-    }
-  }, {
-    label: 'Make Text Smaller',
-    accelerator: 'CmdOrCtrl+-',
-    click() {
-      activate('zoom-out');
-    }
-  }, {
-    label: 'Reset Zoom Level',
-    accelerator: 'CmdOrCtrl+0',
-    click() {
-      activate('zoom-reset');
-    }
-  }, {
-    type: 'separator'
-  }, {
-    label: 'Toggle Full Screen',
-    accelerator: 'Ctrl+Command+F',
-    click: (item, focusedWindow) => {
-      if (focusedWindow) {
-        focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
-      }
-    }
   }]
 }, {
   role: 'window',
@@ -173,36 +136,6 @@ const otherTemplate: MenuItemConstructorOptions[] = [{
     click: (item, focusedWindow) => {
       if (focusedWindow) {
         focusedWindow.reload();
-      }
-    }
-  }, {
-    type: 'separator'
-  }, {
-    label: 'Make Text Larger',
-    accelerator: 'CmdOrCtrl+Plus',
-    click() {
-      activate('zoom-in');
-    }
-  }, {
-    label: 'Make Text Smaller',
-    accelerator: 'CmdOrCtrl+-',
-    click() {
-      activate('zoom-out');
-    }
-  }, {
-    label: 'Reset Zoom Level',
-    accelerator: 'CmdOrCtrl+0',
-    click() {
-      activate('zoom-reset');
-    }
-  }, {
-    type: 'separator'
-  }, {
-    label: 'Toggle Full Screen',
-    accelerator: 'F11',
-    click: (item, focusedWindow) => {
-      if (focusedWindow) {
-        focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
       }
     }
   }]
