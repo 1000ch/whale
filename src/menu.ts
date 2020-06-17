@@ -83,6 +83,16 @@ const darwinTemplate: MenuItemConstructorOptions[] = [{
         focusedWindow.reload();
       }
     }
+  }, {
+    type: 'separator'
+  }, {
+    role: 'togglefullscreen'
+  }, {
+    role: 'resetZoom'
+  }, {
+    role: 'zoomIn'
+  }, {
+    role: 'zoomOut'
   }]
 }, {
   role: 'window',
@@ -138,6 +148,16 @@ const otherTemplate: MenuItemConstructorOptions[] = [{
         focusedWindow.reload();
       }
     }
+  }, {
+    type: 'separator'
+  }, {
+    role: 'togglefullscreen'
+  }, {
+    role: 'resetZoom'
+  }, {
+    role: 'zoomIn'
+  }, {
+    role: 'zoomOut'
   }]
 }, {
   role: 'help',
