@@ -20,6 +20,10 @@ ${process.platform} ${process.arch} ${os.release()}`;
 
     await shell.openExternal(`https://github.com/1000ch/whale/issues/new?body=${encodeURIComponent(body)}`);
   }
+}, {
+  type: 'separator'
+}, {
+  role: 'toggleDevTools'
 }];
 
 if (process.platform !== 'darwin') {

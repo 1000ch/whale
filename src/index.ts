@@ -1,7 +1,6 @@
 import path from 'path';
 import fs from 'fs';
 import {app, shell, BrowserWindow, Menu} from 'electron';
-import electronDebug from 'electron-debug';
 import electronDl from 'electron-dl';
 import electronContextMenu from 'electron-context-menu';
 import appMenu from './menu';
@@ -9,10 +8,6 @@ import tray from './tray';
 import config from './config';
 import update from './update';
 
-electronDebug({
-  isEnabled: true,
-  showDevTools: false
-});
 electronDl();
 electronContextMenu();
 
