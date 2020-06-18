@@ -1,7 +1,29 @@
 import os from 'os';
 import {app, shell, dialog, Menu, MenuItemConstructorOptions} from 'electron';
+import config from './config';
 
 const appName = app.getName();
+
+const historySubmenu: MenuItemConstructorOptions[] = [{
+  label: 'Home',
+  accelerator: 'CommandOrControl+Shift+H',
+  async click(item, focusedWindow) {
+    const baseURL = config.get('baseURL');
+    await focusedWindow.loadURL(baseURL);
+  }
+}, {
+  label: 'Back',
+  accelerator: 'CommandOrControl+[',
+  click(item, focusedWindow) {
+    focusedWindow.webContents.goBack();
+  }
+}, {
+  label: 'Forward',
+  accelerator: 'CommandOrControl+]',
+  click(item, focusedWindow) {
+    focusedWindow.webContents.goForward();
+  }
+}];
 
 const helpSubmenu: MenuItemConstructorOptions[] = [{
   label: `${appName} Website`,
@@ -81,7 +103,7 @@ const darwinTemplate: MenuItemConstructorOptions[] = [{
   label: 'View',
   submenu: [{
     label: 'Reload',
-    accelerator: 'CmdOrCtrl+R',
+    accelerator: 'CommandOrControl+R',
     click: (item, focusedWindow) => {
       if (focusedWindow) {
         focusedWindow.reload();
@@ -98,6 +120,9 @@ const darwinTemplate: MenuItemConstructorOptions[] = [{
   }, {
     role: 'zoomOut'
   }]
+}, {
+  label: 'History',
+  submenu: historySubmenu
 }, {
   role: 'window',
   submenu: [{
@@ -146,11 +171,9 @@ const otherTemplate: MenuItemConstructorOptions[] = [{
   label: 'View',
   submenu: [{
     label: 'Reload',
-    accelerator: 'CmdOrCtrl+R',
-    click: (item, focusedWindow) => {
-      if (focusedWindow) {
-        focusedWindow.reload();
-      }
+    accelerator: 'CommandOrControl+R',
+    click(item, focusedWindow) {
+      focusedWindow.reload();
     }
   }, {
     type: 'separator'
@@ -163,6 +186,9 @@ const otherTemplate: MenuItemConstructorOptions[] = [{
   }, {
     role: 'zoomOut'
   }]
+}, {
+  label: 'History',
+  submenu: historySubmenu
 }, {
   role: 'help',
   submenu: helpSubmenu
