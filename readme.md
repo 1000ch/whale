@@ -10,7 +10,7 @@ Unofficial [Trello](https://trello.com/) app
 
 ## Install
 
-macOS 10.9+ & Linux are supported.
+[macOS 10.10 (Yosemite)](https://www.electronjs.org/docs/tutorial/support#macos)+, [Windows](https://www.electronjs.org/docs/tutorial/support#windows) and [Linux](https://www.electronjs.org/docs/tutorial/support#linux) are supported.
 
 ### macOS
 
