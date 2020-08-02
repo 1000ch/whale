@@ -31,7 +31,7 @@
     "electron": "^9.0.0",
     "electron-builder": "^22.7.0",
     "typescript": "^3.9.5",
-    "xo": "^0.32.0"
+    "xo": "^0.32.1"
   },
   "build": {
     "files": [
