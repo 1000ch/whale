@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "electron-config": "^2.0.0",
-    "electron-context-menu": "^2.0.0",
+    "electron-context-menu": "^2.3.0",
     "electron-dl": "^3.0.0"
   },
   "devDependencies": {
