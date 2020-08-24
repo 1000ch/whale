@@ -28,7 +28,7 @@
     "electron-dl": "^3.0.2"
   },
   "devDependencies": {
-    "electron": "^9.2.0",
+    "electron": "^9.2.1",
     "electron-builder": "^22.8.0",
     "typescript": "^4.0.2",
     "xo": "^0.33.0"
