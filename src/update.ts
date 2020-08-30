@@ -22,7 +22,7 @@ function init() {
   });
 
   const version = app.getVersion();
-  const url = `https://hazel-mdyjxpqlnl.now.sh/update/${process.platform}/${version}`;
+  const url = `https://whale-updater.herokuapp.com/update/${process.platform}/${version}`;
   autoUpdater.setFeedURL({url});
 }
 
