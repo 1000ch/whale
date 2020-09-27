@@ -67,7 +67,7 @@
       ],
       "synopsis": "Unofficial Trello app",
       "description": "Whale is unofficial app for Trello.",
-      "category": "Productivity"
+      "category": "ProjectManagement"
     },
     "win": {
       "verifyUpdateCodeSignature": false
