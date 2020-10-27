@@ -1,13 +1,15 @@
 import {resolve} from 'path';
 import {readFileSync} from 'fs';
 import {app, shell, BrowserWindow, Menu} from 'electron';
+import electronDl from 'electron-dl';
+import electronContextMenu from 'electron-context-menu';
 import appMenu from './menu';
 import tray from './tray';
 import config from './config';
 import update from './update';
 
-require('electron-dl')();
-require('electron-context-menu')();
+electronDl();
+electronContextMenu();
 
 let mainWindow: BrowserWindow = null;
 let isQuitting = false;
