@@ -1,21 +1,19 @@
-import path from 'path';
-import fs from 'fs';
+import {resolve} from 'path';
+import {readFileSync} from 'fs';
 import {app, shell, BrowserWindow, Menu} from 'electron';
-import electronDl from 'electron-dl';
-import electronContextMenu from 'electron-context-menu';
 import appMenu from './menu';
 import tray from './tray';
 import config from './config';
 import update from './update';
 
-electronDl();
-electronContextMenu();
+require('electron-dl')();
+require('electron-context-menu')();
 
 let mainWindow: BrowserWindow = null;
 let isQuitting = false;
 
-const cssPath = path.resolve(__dirname, '../browser.css');
-const browserCSS = fs.readFileSync(cssPath, 'utf8');
+const cssPath = resolve(__dirname, '../browser.css');
+const browserCSS = readFileSync(cssPath, 'utf8');
 
 app.on('second-instance', () => {
   if (mainWindow?.isMinimized()) {
@@ -40,14 +38,14 @@ function createMainWindow() {
     y: lastWindowState.y,
     width: lastWindowState.width,
     height: lastWindowState.height,
-    icon: process.platform === 'linux' && path.resolve(__dirname, '../static/Icon.png'),
+    icon: process.platform === 'linux' && resolve(__dirname, '../static/Icon.png'),
     minWidth: 480,
     minHeight: 480,
     titleBarStyle: 'hiddenInset',
     autoHideMenuBar: true,
     backgroundColor: '#fff',
     webPreferences: {
-      preload: path.resolve(__dirname, '../browser.js'),
+      preload: resolve(__dirname, '../browser.js'),
       nodeIntegration: false,
       plugins: true
     }
