@@ -6,7 +6,8 @@
   "private": true,
   "license": "MIT",
   "repository": {
-    "url": "https://github.com/1000ch/whale"
+    "type": "git",
+    "url": "git@github.com:1000ch/whale.git"
   },
   "author": {
     "name": "Shogo Sensui",
