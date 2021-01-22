@@ -19,10 +19,10 @@ const browserCSS = readFileSync(cssPath, 'utf8');
 
 app.on('second-instance', () => {
   if (mainWindow?.isMinimized()) {
-    mainWindow?.restore();
+    mainWindow.restore();
   }
 
-  mainWindow?.show();
+  mainWindow.show();
 });
 
 if (!app.requestSingleInstanceLock()) {
@@ -107,7 +107,7 @@ app.on('ready', async () => {
 });
 
 app.on('activate', () => {
-  mainWindow?.show();
+  mainWindow.show();
 });
 
 app.on('before-quit', () => {
