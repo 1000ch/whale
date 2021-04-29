@@ -1,0 +1,38 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "20:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: typescript
+    versions:
+    - 4.1.5
+    - 4.2.2
+    - 4.2.4
+  - dependency-name: electron
+    versions:
+    - 11.2.1
+    - 11.3.0
+    - 12.0.1
+    - 12.0.2
+    - 12.0.5
+  - dependency-name: electron-context-menu
+    versions:
+    - 2.5.0
+    - 2.5.2
+  - dependency-name: electron-dl
+    versions:
+    - 3.0.3
+    - 3.1.0
+    - 3.2.0
+    - 3.2.1
+  - dependency-name: xo
+    versions:
+    - 0.38.1
+    - 0.38.2
+  - dependency-name: electron-builder
+    versions:
+    - 22.10.5
