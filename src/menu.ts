@@ -1,6 +1,6 @@
 import os from 'os';
 import {app, shell, dialog, Menu, MenuItemConstructorOptions} from 'electron';
-import config from './config';
+import store from './store';
 
 const appName = app.getName();
 
@@ -8,7 +8,7 @@ const historySubmenu: MenuItemConstructorOptions[] = [{
   label: 'Home',
   accelerator: 'CommandOrControl+Shift+H',
   async click(item, focusedWindow) {
-    const baseURL = config.get('baseURL');
+    const baseURL = store.get('baseURL');
     await focusedWindow.loadURL(baseURL);
   }
 }, {

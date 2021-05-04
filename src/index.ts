@@ -4,8 +4,8 @@ import {app, shell, BrowserWindow, Menu} from 'electron';
 import electronDl from 'electron-dl';
 import electronContextMenu from 'electron-context-menu';
 import appMenu from './menu';
+import store from './store';
 import tray from './tray';
-import config from './config';
 import update from './update';
 
 electronDl();
@@ -30,7 +30,7 @@ if (!app.requestSingleInstanceLock()) {
 }
 
 function createMainWindow() {
-  const lastWindowState = config.get('lastWindowState');
+  const lastWindowState = store.get('lastWindowState');
   const maxWindowInteger = 2147483647;
 
   const window = new BrowserWindow({
@@ -96,10 +96,10 @@ app.on('ready', async () => {
   });
 
   mainWindow.webContents.on('did-navigate-in-page', (event, url) => {
-    config.set('lastURL', url);
+    store.set('lastURL', url);
   });
 
-  const lastURL = config.get('lastURL');
+  const lastURL = store.get('lastURL');
   await mainWindow.loadURL(lastURL);
 
   update.init();
@@ -114,6 +114,6 @@ app.on('before-quit', () => {
   isQuitting = true;
 
   if (!mainWindow?.isFullScreen()) {
-    config.set('lastWindowState', mainWindow?.getBounds());
+    store.set('lastWindowState', mainWindow?.getBounds());
   }
 });

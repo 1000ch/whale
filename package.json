@@ -24,15 +24,15 @@
     "build": "tsc"
   },
   "dependencies": {
-    "electron-config": "^2.0.0",
-    "electron-context-menu": "^2.5.2",
-    "electron-dl": "3.2.1"
+    "electron-context-menu": "^3.0.0",
+    "electron-dl": "3.2.1",
+    "electron-store": "^8.0.0"
   },
   "devDependencies": {
-    "electron": "^12.0.5",
+    "electron": "^12.0.6",
     "electron-builder": "^22.10.5",
     "typescript": "^4.2.4",
-    "xo": "^0.38.2"
+    "xo": "^0.39.1"
   },
   "main": "out",
   "build": {
