@@ -1,6 +1,7 @@
-import {resolve} from 'path';
-import {readFileSync} from 'fs';
 import {app, shell, BrowserWindow, Menu} from 'electron';
+import {readFileSync} from 'fs';
+import {resolve} from 'path';
+import process from 'process';
 import electronDl from 'electron-dl';
 import electronContextMenu from 'electron-context-menu';
 import appMenu from './menu';
@@ -31,7 +32,7 @@ if (!app.requestSingleInstanceLock()) {
 
 function createMainWindow() {
   const lastWindowState = store.get('lastWindowState');
-  const maxWindowInteger = 2147483647;
+  const maxWindowInteger = 2_147_483_647;
 
   const window = new BrowserWindow({
     title: app.getName(),
@@ -47,10 +48,11 @@ function createMainWindow() {
     autoHideMenuBar: true,
     backgroundColor: '#fff',
     webPreferences: {
-      preload: resolve(__dirname, '../browser.js'),
+      nativeWindowOpen: true,
       nodeIntegration: false,
-      plugins: true
-    }
+      plugins: true,
+      preload: resolve(__dirname, '../browser.js'),
+    },
   });
 
   if (process.platform === 'darwin') {
