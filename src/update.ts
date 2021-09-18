@@ -1,4 +1,5 @@
 import {app, autoUpdater} from 'electron';
+import process from 'process';
 
 function init() {
   if (process.platform !== 'darwin') {

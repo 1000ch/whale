@@ -1,7 +1,8 @@
-import path from 'path';
 import {app, Menu, Tray, BrowserWindow} from 'electron';
+import path from 'path';
+import process from 'process';
 
-let tray = null;
+let tray: Tray = null;
 
 function create(window: BrowserWindow) {
   if (process.platform === 'darwin' || tray) {
@@ -22,11 +23,11 @@ function create(window: BrowserWindow) {
     label: 'Toggle',
     click() {
       toggleWin();
-    }
+    },
   }, {
-    type: 'separator'
+    type: 'separator',
   }, {
-    role: 'quit'
+    role: 'quit',
   }]);
 
   tray = new Tray(iconPath);
