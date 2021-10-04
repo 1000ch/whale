@@ -29,7 +29,7 @@
     "electron-store": "^8.0.1"
   },
   "devDependencies": {
-    "electron": "^14.0.1",
+    "electron": "^15.1.0",
     "electron-builder": "^22.11.7",
     "typescript": "^4.4.3",
     "xo": "^0.44.0"
