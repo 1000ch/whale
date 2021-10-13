@@ -1,10 +1,6 @@
-# Whale
+# Whale ![GitHub Actions Status](https://github.com/1000ch/whale/workflows/test/badge.svg)
 
-Unofficial [Trello](https://trello.com/) app
-
-![GitHub Actions Status](https://github.com/1000ch/whale/workflows/test/badge.svg?branch=master)
-[![Dependency Status](https://david-dm.org/1000ch/whale.svg)](https://david-dm.org/1000ch/whale)
-[![devDependency Status](https://david-dm.org/1000ch/whale/dev-status.svg)](https://david-dm.org/1000ch/whale?type=dev)
+Unofficial [Trello](https://trello.com/) app 🐳
 
 ![Whale demo](demo.png)
 
