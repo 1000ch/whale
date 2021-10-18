@@ -16,7 +16,7 @@ let mainWindow: BrowserWindow = null;
 let isQuitting = false;
 
 const cssPath = resolve(__dirname, '../browser.css');
-const browserCSS = readFileSync(cssPath, 'utf8');
+const browserCss = readFileSync(cssPath, 'utf8');
 
 app.on('second-instance', () => {
   if (mainWindow?.isMinimized()) {
@@ -88,7 +88,7 @@ app.on('ready', async () => {
   tray.create(mainWindow);
 
   mainWindow.webContents.on('dom-ready', async () => {
-    await mainWindow.webContents.insertCSS(browserCSS);
+    await mainWindow.webContents.insertCSS(browserCss);
     mainWindow.show();
   });
 
@@ -101,8 +101,8 @@ app.on('ready', async () => {
     store.set('lastURL', url);
   });
 
-  const lastURL = store.get('lastURL');
-  await mainWindow.loadURL(lastURL);
+  const lastUrl = store.get('lastUrl');
+  await mainWindow.loadURL(lastUrl);
 
   update.init();
   update.checkUpdate();

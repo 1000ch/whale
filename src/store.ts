@@ -9,7 +9,7 @@ export default new Store({
       width: 840,
       height: 840,
     },
-    baseURL: 'https://trello.com/',
-    lastURL: 'https://trello.com/login',
+    baseUrl: 'https://trello.com/',
+    lastUrl: 'https://trello.com/login',
   },
 });

@@ -9,8 +9,8 @@ const historySubmenu: MenuItemConstructorOptions[] = [{
   label: 'Home',
   accelerator: 'CommandOrControl+Shift+H',
   async click(item, focusedWindow) {
-    const baseURL = store.get('baseURL');
-    await focusedWindow.loadURL(baseURL);
+    const baseUrl = store.get('baseUrl');
+    await focusedWindow.loadURL(baseUrl);
   },
 }, {
   label: 'Back',
