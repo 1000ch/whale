@@ -9,7 +9,8 @@
       "es2022",
       "dom"
     ],
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
   "include": [
     "src/**/*"

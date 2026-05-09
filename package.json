@@ -27,7 +27,8 @@
   "dependencies": {
     "electron-context-menu": "^4.1.2",
     "electron-dl": "^4.0.0",
-    "electron-store": "^11.0.2"
+    "electron-store": "^11.0.2",
+    "electron-updater": "^6.8.3"
   },
   "devDependencies": {
     "electron": "^42.0.1",
@@ -42,6 +43,11 @@
       "!asset"
     ],
     "appId": "net.1000ch.whale",
+    "publish": {
+      "provider": "github",
+      "owner": "1000ch",
+      "repo": "whale"
+    },
     "mac": {
       "category": "public.app-category.productivity",
       "darkModeSupport": true,
