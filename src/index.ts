@@ -84,15 +84,15 @@ function createMainWindow() {
     window.setMaximumSize(maxWindowInteger, maxWindowInteger);
   });
 
-  window.webContents.setWindowOpenHandler(({url}) => {
-    void shell.openExternal(url);
+  window.webContents.setWindowOpenHandler(details => {
+    void shell.openExternal(details.url);
     return {action: 'deny'};
   });
 
   return window;
 }
 
-app.on('ready', () => {
+app.on('ready', async () => {
   if (process.platform === 'darwin') {
     app.dock?.setIcon(resolve(__dirname, '../static/Icon.png'));
   }
@@ -101,8 +101,8 @@ app.on('ready', () => {
   mainWindow = createMainWindow();
   tray.create(mainWindow);
 
-  mainWindow.webContents.on('dom-ready', () => {
-    void mainWindow!.webContents.insertCSS(browserCss);
+  mainWindow.webContents.on('dom-ready', async () => {
+    await mainWindow!.webContents.insertCSS(browserCss);
     mainWindow!.show();
   });
 
@@ -111,10 +111,10 @@ app.on('ready', () => {
   });
 
   const lastUrl = store.get('lastUrl');
-  void mainWindow.loadURL(lastUrl);
+  await mainWindow.loadURL(lastUrl);
 
   update.init();
-  update.checkUpdate();
+  await update.checkUpdate();
 });
 
 app.on('activate', () => {

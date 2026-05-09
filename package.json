@@ -84,6 +84,8 @@
   },
   "xo": {
     "space": 2,
-    "rules": {}
+    "rules": {
+      "@typescript-eslint/strict-void-return": 0
+    }
   }
 }

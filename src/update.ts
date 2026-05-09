@@ -6,8 +6,8 @@ function init() {
   });
 }
 
-function checkUpdate() {
-  void autoUpdater.checkForUpdatesAndNotify();
+async function checkUpdate() {
+  await autoUpdater.checkForUpdatesAndNotify();
 }
 
 const defaultObject = {init, checkUpdate};
