@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es2018",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "es2022",
     "rootDir": "src",
     "outDir": "out",
     "lib": [
-      "es2018",
+      "es2022",
       "dom"
     ],
     "esModuleInterop": true

@@ -1,18 +1,26 @@
-import {app, shell, BrowserWindow, Menu} from 'electron';
-import {readFileSync} from 'fs';
-import {resolve} from 'path';
-import process from 'process';
+import {readFileSync} from 'node:fs';
+import {resolve, dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import process from 'node:process';
+import {
+  app,
+  shell,
+  BrowserWindow,
+  Menu,
+} from 'electron';
 import electronDl from 'electron-dl';
 import electronContextMenu from 'electron-context-menu';
-import appMenu from './menu';
-import store from './store';
-import tray from './tray';
-import update from './update';
+import appMenu from './menu.js';
+import store from './store.js';
+import tray from './tray.js';
+import update from './update.js';
 
 electronDl();
 electronContextMenu();
 
-let mainWindow: BrowserWindow = null;
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+let mainWindow: BrowserWindow | undefined;
 let isQuitting = false;
 
 const cssPath = resolve(__dirname, '../browser.css');
@@ -23,7 +31,7 @@ app.on('second-instance', () => {
     mainWindow.restore();
   }
 
-  mainWindow.show();
+  mainWindow?.show();
 });
 
 if (!app.requestSingleInstanceLock()) {
@@ -41,17 +49,14 @@ function createMainWindow() {
     y: lastWindowState.y,
     width: lastWindowState.width,
     height: lastWindowState.height,
-    icon: process.platform === 'linux' && resolve(__dirname, '../static/Icon.png'),
+    icon: process.platform === 'linux' ? resolve(__dirname, '../static/Icon.png') : undefined,
     minWidth: 480,
     minHeight: 480,
     titleBarStyle: 'hiddenInset',
     autoHideMenuBar: true,
     backgroundColor: '#fff',
     webPreferences: {
-      nativeWindowOpen: true,
       nodeIntegration: false,
-      plugins: true,
-      preload: resolve(__dirname, '../browser.js'),
     },
   });
 
@@ -79,22 +84,26 @@ function createMainWindow() {
     window.setMaximumSize(maxWindowInteger, maxWindowInteger);
   });
 
+  window.webContents.setWindowOpenHandler(({url}) => {
+    void shell.openExternal(url);
+    return {action: 'deny'};
+  });
+
   return window;
 }
 
-app.on('ready', async () => {
+app.on('ready', () => {
+  if (process.platform === 'darwin') {
+    app.dock?.setIcon(resolve(__dirname, '../static/Icon.png'));
+  }
+
   Menu.setApplicationMenu(appMenu);
   mainWindow = createMainWindow();
   tray.create(mainWindow);
 
-  mainWindow.webContents.on('dom-ready', async () => {
-    await mainWindow.webContents.insertCSS(browserCss);
-    mainWindow.show();
-  });
-
-  mainWindow.webContents.on('new-window', async (event, url) => {
-    event.preventDefault();
-    await shell.openExternal(url);
+  mainWindow.webContents.on('dom-ready', () => {
+    void mainWindow!.webContents.insertCSS(browserCss);
+    mainWindow!.show();
   });
 
   mainWindow.webContents.on('did-navigate-in-page', (event, url) => {
@@ -102,14 +111,14 @@ app.on('ready', async () => {
   });
 
   const lastUrl = store.get('lastUrl');
-  await mainWindow.loadURL(lastUrl);
+  void mainWindow.loadURL(lastUrl);
 
   update.init();
   update.checkUpdate();
 });
 
 app.on('activate', () => {
-  mainWindow.show();
+  mainWindow?.show();
 });
 
 app.on('before-quit', () => {

@@ -1,8 +1,16 @@
-import {app, Menu, Tray, BrowserWindow} from 'electron';
-import path from 'path';
-import process from 'process';
+import {
+  app,
+  Menu,
+  Tray,
+  type BrowserWindow,
+} from 'electron';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import process from 'node:process';
 
-let tray: Tray = null;
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+let tray: Tray | undefined;
 
 function create(window: BrowserWindow) {
   if (process.platform === 'darwin' || tray) {

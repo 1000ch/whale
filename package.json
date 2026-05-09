@@ -5,6 +5,7 @@
   "description": "Whale app",
   "private": true,
   "license": "MIT",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git@github.com:1000ch/whale.git"
@@ -24,17 +25,17 @@
     "build": "tsc"
   },
   "dependencies": {
-    "electron-context-menu": "^3.1.1",
-    "electron-dl": "^3.2.1",
-    "electron-store": "^8.0.1"
+    "electron-context-menu": "^4.1.2",
+    "electron-dl": "^4.0.0",
+    "electron-store": "^11.0.2"
   },
   "devDependencies": {
-    "electron": "^15.2.0",
-    "electron-builder": "^22.13.1",
-    "typescript": "^4.4.4",
-    "xo": "^0.45.0"
+    "electron": "^42.0.1",
+    "electron-builder": "^26.8.1",
+    "typescript": "^6.0.3",
+    "xo": "^2.0.2"
   },
-  "main": "out",
+  "main": "out/index.js",
   "build": {
     "files": [
       "**/*",
@@ -43,8 +44,8 @@
     "appId": "net.1000ch.whale",
     "mac": {
       "category": "public.app-category.productivity",
-      "electronUpdaterCompatibility": ">=2.15.0",
-      "darkModeSupport": true
+      "darkModeSupport": true,
+      "icon": "static/Icon.icns"
     },
     "dmg": {
       "iconSize": 160,
@@ -76,15 +77,7 @@
     }
   },
   "xo": {
-    "esnext": true,
     "space": 2,
-    "envs": [
-      "node",
-      "browser"
-    ],
-    "rules": {
-      "unicorn/prefer-module": "off",
-      "unicorn/prefer-node-protocol": "off"
-    }
+    "rules": {}
   }
 }

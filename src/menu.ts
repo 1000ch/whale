@@ -1,6 +1,13 @@
-import {app, shell, dialog, Menu, MenuItemConstructorOptions} from 'electron';
-import os from 'os';
-import process from 'process';
+import {
+  app,
+  shell,
+  dialog,
+  Menu,
+  BrowserWindow,
+  type MenuItemConstructorOptions,
+} from 'electron';
+import os from 'node:os';
+import process from 'node:process';
 import store from './store.js';
 
 const appName = app.getName();
@@ -8,32 +15,37 @@ const appName = app.getName();
 const historySubmenu: MenuItemConstructorOptions[] = [{
   label: 'Home',
   accelerator: 'CommandOrControl+Shift+H',
-  async click(item, focusedWindow) {
-    const baseUrl = store.get('baseUrl');
-    await focusedWindow.loadURL(baseUrl);
+  click(item, focusedWindow) {
+    if (focusedWindow instanceof BrowserWindow) {
+      void focusedWindow.loadURL(store.get('baseUrl'));
+    }
   },
 }, {
   label: 'Back',
   accelerator: 'CommandOrControl+[',
   click(item, focusedWindow) {
-    focusedWindow.webContents.goBack();
+    if (focusedWindow instanceof BrowserWindow) {
+      focusedWindow.webContents.navigationHistory.goBack();
+    }
   },
 }, {
   label: 'Forward',
   accelerator: 'CommandOrControl+]',
   click(item, focusedWindow) {
-    focusedWindow.webContents.goForward();
+    if (focusedWindow instanceof BrowserWindow) {
+      focusedWindow.webContents.navigationHistory.goForward();
+    }
   },
 }];
 
 const helpSubmenu: MenuItemConstructorOptions[] = [{
   label: `${appName} Website`,
-  async click() {
-    await shell.openExternal('https://github.com/1000ch/whale');
+  click() {
+    void shell.openExternal('https://github.com/1000ch/whale');
   },
 }, {
   label: 'Report an Issue...',
-  async click() {
+  click() {
     const body = `
 <!-- Please succinctly describe your issue and steps to reproduce it. -->
 -
@@ -41,7 +53,7 @@ ${app.getName()} ${app.getVersion()}
 Electron ${process.versions.electron}
 ${process.platform} ${process.arch} ${os.release()}`;
 
-    await shell.openExternal(`https://github.com/1000ch/whale/issues/new?body=${encodeURIComponent(body)}`);
+    void shell.openExternal(`https://github.com/1000ch/whale/issues/new?body=${encodeURIComponent(body)}`);
   },
 }, {
   type: 'separator',
@@ -52,8 +64,8 @@ ${process.platform} ${process.arch} ${os.release()}`;
 if (process.platform !== 'darwin') {
   helpSubmenu.push({
     role: 'about',
-    async click() {
-      await dialog.showMessageBox({
+    click() {
+      void dialog.showMessageBox({
         title: `About ${appName}`,
         message: `${appName} ${app.getVersion()}`,
         detail: 'Created by Shogo Sensui',
@@ -105,8 +117,8 @@ const darwinTemplate: MenuItemConstructorOptions[] = [{
   submenu: [{
     label: 'Reload',
     accelerator: 'CommandOrControl+R',
-    click: (item, focusedWindow) => {
-      if (focusedWindow) {
+    click(item, focusedWindow) {
+      if (focusedWindow instanceof BrowserWindow) {
         focusedWindow.reload();
       }
     },
@@ -174,7 +186,9 @@ const otherTemplate: MenuItemConstructorOptions[] = [{
     label: 'Reload',
     accelerator: 'CommandOrControl+R',
     click(item, focusedWindow) {
-      focusedWindow.reload();
+      if (focusedWindow instanceof BrowserWindow) {
+        focusedWindow.reload();
+      }
     },
   }, {
     type: 'separator',
