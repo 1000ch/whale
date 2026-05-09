@@ -1,6 +1,6 @@
 import Store from 'electron-store';
 
-export default new Store({
+const store = new Store({
   defaults: {
     zoomFactor: 1,
     lastWindowState: {
@@ -13,3 +13,5 @@ export default new Store({
     lastUrl: 'https://trello.com/login',
   },
 });
+
+export default store;

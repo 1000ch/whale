@@ -1,6 +1,13 @@
-import {app, shell, dialog, Menu, MenuItemConstructorOptions} from 'electron';
-import os from 'os';
-import process from 'process';
+import {
+  app,
+  shell,
+  dialog,
+  Menu,
+  BrowserWindow,
+  type MenuItemConstructorOptions,
+} from 'electron';
+import os from 'node:os';
+import process from 'node:process';
 import store from './store.js';
 
 const appName = app.getName();
@@ -9,20 +16,25 @@ const historySubmenu: MenuItemConstructorOptions[] = [{
   label: 'Home',
   accelerator: 'CommandOrControl+Shift+H',
   async click(item, focusedWindow) {
-    const baseUrl = store.get('baseUrl');
-    await focusedWindow.loadURL(baseUrl);
+    if (focusedWindow instanceof BrowserWindow) {
+      await focusedWindow.loadURL(store.get('baseUrl'));
+    }
   },
 }, {
   label: 'Back',
   accelerator: 'CommandOrControl+[',
   click(item, focusedWindow) {
-    focusedWindow.webContents.goBack();
+    if (focusedWindow instanceof BrowserWindow) {
+      focusedWindow.webContents.navigationHistory.goBack();
+    }
   },
 }, {
   label: 'Forward',
   accelerator: 'CommandOrControl+]',
   click(item, focusedWindow) {
-    focusedWindow.webContents.goForward();
+    if (focusedWindow instanceof BrowserWindow) {
+      focusedWindow.webContents.navigationHistory.goForward();
+    }
   },
 }];
 
@@ -105,8 +117,8 @@ const darwinTemplate: MenuItemConstructorOptions[] = [{
   submenu: [{
     label: 'Reload',
     accelerator: 'CommandOrControl+R',
-    click: (item, focusedWindow) => {
-      if (focusedWindow) {
+    click(item, focusedWindow) {
+      if (focusedWindow instanceof BrowserWindow) {
         focusedWindow.reload();
       }
     },
@@ -174,7 +186,9 @@ const otherTemplate: MenuItemConstructorOptions[] = [{
     label: 'Reload',
     accelerator: 'CommandOrControl+R',
     click(item, focusedWindow) {
-      focusedWindow.reload();
+      if (focusedWindow instanceof BrowserWindow) {
+        focusedWindow.reload();
+      }
     },
   }, {
     type: 'separator',
