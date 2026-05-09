@@ -13,7 +13,7 @@ import electronContextMenu from 'electron-context-menu';
 import appMenu from './menu.js';
 import store from './store.js';
 import tray from './tray.js';
-import update from './update.js';
+import * as update from './update.js';
 
 electronDl();
 electronContextMenu();

@@ -1,14 +1,11 @@
-import {autoUpdater} from 'electron-updater';
+import electronUpdater from 'electron-updater';
 
-function init() {
-  autoUpdater.on('error', error => {
+export function init() {
+  electronUpdater.autoUpdater.on('error', error => {
     console.error('auto-updater error:', error.message);
   });
 }
 
-async function checkUpdate() {
-  await autoUpdater.checkForUpdatesAndNotify();
+export async function checkUpdate() {
+  await electronUpdater.autoUpdater.checkForUpdatesAndNotify();
 }
-
-const defaultObject = {init, checkUpdate};
-export default defaultObject;
