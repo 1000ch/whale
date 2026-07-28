@@ -28,11 +28,11 @@
     "electron-context-menu": "^4.1.2",
     "electron-dl": "^4.0.0",
     "electron-store": "^11.0.2",
-    "electron-updater": "^6.8.3"
+    "electron-updater": "^6.8.9"
   },
   "devDependencies": {
     "electron": "^42.0.1",
-    "electron-builder": "^26.8.1",
+    "electron-builder": "^26.15.3",
     "typescript": "^6.0.3",
     "xo": "^2.0.2"
   },
