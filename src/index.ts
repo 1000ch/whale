@@ -65,14 +65,16 @@ function createMainWindow() {
   }
 
   window.on('close', event => {
-    if (!isQuitting) {
-      event.preventDefault();
+    if (isQuitting) {
+      return;
+    }
 
-      if (process.platform === 'darwin') {
-        app.hide();
-      } else {
-        window.hide();
-      }
+    event.preventDefault();
+
+    if (process.platform === 'darwin') {
+      app.hide();
+    } else {
+      window.hide();
     }
   });
 

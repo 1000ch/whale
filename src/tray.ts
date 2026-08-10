@@ -39,7 +39,7 @@ function create(window: BrowserWindow) {
   }]);
 
   tray = new Tray(iconPath);
-  tray.setToolTip(`${app.getName()}`);
+  tray.setToolTip(app.getName());
   tray.setContextMenu(contextMenu);
   tray.on('click', toggleWin);
 }

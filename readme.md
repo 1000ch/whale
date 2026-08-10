@@ -14,8 +14,8 @@ Unofficial [Trello](https://trello.com/) app 🐳
 
 Alternatively, if you use [Homebrew](http://brew.sh/), you can install via:
 
-```
-brew install --cask whale
+```bash
+$ brew install --cask whale
 ```
 
 ### Windows
